@@ -1,0 +1,25 @@
+{
+    "database": {
+        "host": "127.0.0.1",
+        "name": "tenders",
+        "port": "5432",
+        "password": "vishal",
+        "username": "vishal",
+        "maxIdleConn": "100",
+        "maxOpenConn": "100",
+        "debugEnabled": "true",
+        "sslMode": "disable"
+      },
+      "log":{
+        "level":"debug"
+      },
+      "redis": {
+        "host": "localhost",
+        "port": "6379",
+        "dbId": 0
+      },
+      "auth":{
+        "otpSecret":"secret",
+        "expiry":240
+      }
+}

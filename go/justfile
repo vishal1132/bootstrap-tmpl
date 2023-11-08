@@ -1,0 +1,20 @@
+PROJECT_NAME := "{{ service_name }}"
+
+alias b:=build
+alias r:=run
+
+build:
+    @echo "Building..."
+    @go build -o {{ service_name }} .
+
+run: build
+    @echo "Running..."
+    @ENV=local ./{{ service_name }}
+
+migrate:
+    @echo "Migrating..."
+    @PGPASSWORD=$PGPASSWORD psql -h $PGHOST -U $PGUSER -d $PGDATABASE -p $PGPORT < migrations/*.sql
+
+genrsa:
+    @openssl genrsa -out key.pem 2048
+    @openssl rsa -in key.pem -out pub.pem -pubout -outform PEM
